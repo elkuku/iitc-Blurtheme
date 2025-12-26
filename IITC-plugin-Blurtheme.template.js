@@ -28,17 +28,23 @@ function wrapper(plugin_info) {
   window.plugin.blurtheme = function () {}; // define namespace
   /* TEMPLATE FOR ADDITIONAL THEMES
 
-  var CSS_DATA_OF_THEME_NAME = 'CSS HERE';
+  Create a new folder in /themes for your theme.
 
-  CSS_DATA_OF_THEME_NAME need to be replace as other name that you like, will be used in next action
+  Inside that folder create a `meta.json` file containing:
 
-  AND add new line to `themesList` with user-visible name and css data (next line)
+  * A `name` key for the name being displayed to the user
+  * A `preview` key with a link to a preview image
 
-  'SYSTEM_NAME':{'name':'VISIBLE_NAME','css':CSS_DATA_OF_THEME_NAME,'preview':LINK_TO_PREVIEW},
+  e.g.:
 
-  SYSTEM_NAME - system name of style, this value will be saved on theme change
-  VISIBLE_NAME - Name of theme that will visible for end-users
-  CSS_DATA_OF_THEME_NAME - you need to use same as used in previous action
+  {
+    "name": "My awesome Theme",
+    "preview": "https://example.com/preview.png"
+  }
+
+  Create a `main.css` file with the CSS code of your theme.
+
+  You can create additional CSS files that will be included after the main CSS file.
 
   END OF TEMPLATE */
 
