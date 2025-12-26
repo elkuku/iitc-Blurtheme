@@ -1,0 +1,40 @@
+.wm-dialog button:disabled, .wm-dialog input:disabled, .wm-dialog select:disabled {
+    border-color: var(--accentcol04) !important;
+    background: var(--disabled2) !important;
+    color: var(--disabled) !important;
+    text-decoration: none !important;
+    pointer-events: none
+}
+
+.wm-dialog select {
+    background-color: inherit;
+    border: 1px solid var(--accentcol01);
+    color: var(--whitecol)
+}
+
+.wm-dialog .form .array-item {
+    -webkit-transition: .6s cubic-bezier(.165, .84, .44, 1);
+    transition: .6s cubic-bezier(.165, .84, .44, 1)
+}
+
+.wm-dialog .form .array-item.selected {
+    box-shadow: inset 0 0 3px var(--accentcol01);
+    color: var(--linkcol);
+    border-radius: 5px;
+    -webkit-transition: .6s cubic-bezier(.165, .84, .44, 1);
+    transition: .6s cubic-bezier(.165, .84, .44, 1)
+}
+
+.wm-dialog select:disabled {
+    overflow: hidden
+}
+
+.wm-dialog .progress-bar {
+    border-radius: 5px;
+    border: 1px solid transparent
+}
+
+.wm-dialog-wm-config-progress .progress-bar .detailsLoaded, .wm-dialog-wm-config-progress .progress-bar .ok {
+    background: var(--active);
+    border-radius: 5px
+}
