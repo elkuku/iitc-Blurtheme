@@ -7,13 +7,6 @@ const themes = fs.readdirSync('themes', {withFileTypes: true})
     .map(dirent => dirent.name)
 
 const themesList = {}
-let cssDefinitions = ''
-
-themesList.default = {
-    name: 'Default IITC',
-    css: '',
-    preview: 'https://github.com/Falenone/Blurtheme/blob/main/images/prev-default.png?raw=true',
-}
 
 themes.forEach(theme => {
     const meta = JSON.parse(fs.readFileSync(`themes/${theme}/meta.json`))
@@ -26,10 +19,6 @@ themes.forEach(theme => {
         cssString += fs.readFileSync(`themes/${theme}/${file}`, 'utf8') + '\n'
     })
 
-    // cssString = cssString.replace(/ {4}|[\r\n\t]/g, '')
-
-    // cssDefinitions += `const ${theme}CSS = '${cssString}'\n`
-
     themesList[theme] = {
         name: meta.name,
         css: cssString.replace(/ {4}|[\r\n\t]/g, ''),
@@ -41,14 +30,12 @@ const fileName = 'IITC-plugin-Blurtheme.template.js'
 
 let template = fs.readFileSync(fileName, 'utf8') + '\n'
 
-const replacement =
-    cssDefinitions
-    + '\n\n'
-    + 'const themesList = ' + JSON.stringify(themesList, null, 2)
-
 fs.writeFileSync(
     'dist/' + fileName.replace('.template.', '.user.'),
-    template.replace('// {{THEMES_LIST}}', replacement),
+    template.replace(
+        '// {{THEMES_LIST}}',
+        'const themesList = ' + JSON.stringify(themesList, null, 2)
+    ),
 )
 
 fs.writeFileSync(
